@@ -1,0 +1,58 @@
+create or replace TRIGGER trg_limite_gimnasio
+AFTER INSERT ON PARTICIPACION
+FOR EACH ROW
+DECLARE
+    v_servicio_id   NUMBER;
+    v_fecha         DATE;
+    v_sesiones      NUMBER;
+    v_extras        NUMBER;
+BEGIN
+    SELECT a.id_servicio, a.fecha
+    INTO v_servicio_id, v_fecha
+    FROM ACTIVIDAD a
+    WHERE a.id_actividad = :NEW.id_actividad;
+
+    IF v_servicio_id = 1 AND :NEW.rol = 'participante' THEN
+        SELECT COUNT(*)
+        INTO v_sesiones
+        FROM PARTICIPACION p
+        JOIN ACTIVIDAD a ON p.id_actividad = a.id_actividad
+        WHERE p.id_personal = :NEW.id_personal
+          AND a.id_servicio = v_servicio_id
+          AND TRUNC(a.fecha, 'IW') = TRUNC(v_fecha, 'IW'); 
+
+        v_extras := v_sesiones - 3;
+
+        IF v_extras > 0 THEN
+            INSERT INTO PAGO (id_pago, id_personal, id_actividad, monto, fecha)
+            VALUES (seq_pago.NEXTVAL, :NEW.id_personal, :NEW.id_actividad, v_extras * 300, SYSDATE);
+        END IF;
+    END IF;
+END;
+
+
+create or replace TRIGGER trg_limite_participantes
+BEFORE INSERT ON PARTICIPACION
+FOR EACH ROW
+DECLARE
+    v_max_integrantes NUMBER;
+    v_actual NUMBER;
+BEGIN
+    SELECT s.max_integrantes
+    INTO v_max_integrantes
+    FROM SERVICIO s
+    JOIN ACTIVIDAD a ON s.id_servicio = a.id_servicio
+    WHERE a.id_actividad = :NEW.id_actividad;
+
+    SELECT COUNT(*)
+    INTO v_actual
+    FROM PARTICIPACION p
+    WHERE p.id_actividad = :NEW.id_actividad
+      AND p.rol = 'participante';
+
+    -- Validar límite
+    IF :NEW.rol = 'participante' AND v_actual >= v_max_integrantes THEN
+        RAISE_APPLICATION_ERROR(-20001,
+            'Se ha alcanzado el límite de participantes para esta actividad.');
+    END IF;
+END;
