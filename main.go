@@ -20,4 +20,16 @@ func main() {
 		log.Fatal(err)
 	}
 	defer repoPos.DB.Close()
+
+	oracle.ListarServicios(repoOra.DB)
+
+	oracle.ParticipantesActividad(repoOra.DB)
+
+	oracle.ActividadesCupoLleno(repoOra.DB)
+
+	oracle.ElementosPorServicio(repoOra.DB)
+
+	oracle.IngresosPorSemana(repoOra.DB)
+
+	oracle.SesionesYGastosGimnasio(repoOra.DB)
 }

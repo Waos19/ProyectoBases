@@ -141,9 +141,8 @@ INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (9, 10, 'parti
 INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (6, 6, 'participante');
 INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (6, 10, 'instructor');
 INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (8, 10, 'participante');
-INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (8, 2, 'instructor');
+INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (8, 2, 'instructor');  
 INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (2, 5, 'participante');
-INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (8, 2, 'participante');
 INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (1, 5, 'participante');
 INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (10, 8, 'participante');
 INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (5, 7, 'instructor');
@@ -162,6 +161,7 @@ INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (3, 7, 'partic
 INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (7, 6, 'participante');
 INSERT INTO PARTICIPACION (id_personal, id_actividad, rol) VALUES (7, 4, 'participante');
 
+
 -- Datos para ELEMENTO
 INSERT INTO ELEMENTO (id_elemento, nombre, tipo, cantidad_disponible) VALUES (1, 'Balón de fútbol', 'Equipo', 11);
 INSERT INTO ELEMENTO (id_elemento, nombre, tipo, cantidad_disponible) VALUES (2, 'Pinceles', 'Material', 16);
@@ -176,7 +176,7 @@ INSERT INTO ELEMENTO (id_elemento, nombre, tipo, cantidad_disponible) VALUES (8,
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (4, 2, 6);
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (2, 8, 9);
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (2, 4, 1);
-INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (10, 3, 1);
+INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (10, 3, 2); 
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (8, 3, 3);
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (9, 3, 2);
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (6, 1, 4);
@@ -184,7 +184,6 @@ INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUE
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (6, 4, 2);
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (4, 5, 3);
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (4, 7, 1);
-INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (10, 3, 2);
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (9, 5, 8);
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (6, 2, 8);
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (5, 4, 1);
@@ -193,6 +192,7 @@ INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUE
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (6, 7, 2);
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (8, 6, 4);
 INSERT INTO ACTIVIDAD_ELEMENTO (id_actividad, id_elemento, cantidad_usada) VALUES (1, 7, 1);
+
 
 -- Datos para PAGO
 INSERT INTO PAGO (id_pago, id_personal, id_actividad, monto, fecha) VALUES (1, 3, 2, 22.34, TO_DATE('2024-03-11', 'YYYY-MM-DD'));
